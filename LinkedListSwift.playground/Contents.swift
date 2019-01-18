@@ -17,38 +17,22 @@ class LinkedList<T: Equatable> {
 	
 	deinit{ print("\nlist is deinitialized"); }
 	
-	//Function to get size of list
-	func getListSize() -> Int{
-		var count = 0;
-		var current: Node<T>! = self.node;
-		while (current != nil) {
-			count += 1;
-			current = current.nextNode;
-		}
-		return count;
-	}
-	
 	//Function to shift middle node and rearrange list
 	func shiftList() {
 		let originalStartNode: Node<T>! = self.node;
-		var previous: Node<T>! = nil;
-		var current: Node<T>! = self.node;
-		var nodeAfterMid: Node<T>! = nil;
-		var position = 0;
-		let listSize = getListSize();
-		let middle = Int((Double(listSize)/2 - 1).rounded());
-		while (current != nil) {
-			if(position == middle + 1) {
-				nodeAfterMid = current;
-			}
-			previous = current;
-			current = current.nextNode;
-			position = position + 1;
+		//var current: Node<T>! = self.node;
+		var nodeAfterMid: Node<T>! = self.node;
+		var nextNextNode: Node<T>! = self.node;
+		while(nextNextNode != nil){
+			nextNextNode = nextNextNode.nextNode?.nextNode;
+			nodeAfterMid = nodeAfterMid.nextNode;
 		}
+
 		//call function to reverse list
 		reverse();
 		
 		//rearrange list
+		let previous: Node<T>! = self.node;
 		self.node = nodeAfterMid.nextNode!;
 		nodeAfterMid.nextNode = nil;
 		originalStartNode.nextNode = previous;
@@ -59,20 +43,14 @@ class LinkedList<T: Equatable> {
 		var previous: Node<T>! = self.node;
 		var current: Node<T>! = self.node.nextNode!;
 		var next: Node<T>! = current.nextNode!;
-		var count = 0;
+		previous.nextNode = nil;
 		while (next != nil) {
-			if (count == 0){
-				previous.nextNode = nil;
-			}
 			current.nextNode = previous;
 			previous = current;
 			current = next;
 			next = next.nextNode;
-			if (next == nil) {
-				current.nextNode = previous;
-			}
-			count += 1;
 		}
+		current.nextNode = previous;
 		self.node = current;
 	}
 	
@@ -106,7 +84,7 @@ class LinkedList<T: Equatable> {
 	}
 }
 
-let listLimit:Int = 12;
+let listLimit:Int = 11;
 var myList:LinkedList<Int>? = LinkedList<Int>();
 for index in 1...listLimit{
 	myList?.insert(value: index);
