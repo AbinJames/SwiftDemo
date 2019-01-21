@@ -35,18 +35,19 @@ var stringA = "\(varA) times \(constA) is equal to \(varC * 100)"
 print( stringA )
 
 print ("------------String Interpolation Demo End-------------\n")
+
 print ("------------Optional Variable Demo Start-------------")
 //Optional variable
 var myString:String?
-
 myString = "Hello, Swift 4!"
 
 if myString != nil {
-    print( myString )
+	print( myString ?? "No value" )
 } else {
     print("myString has nil value")
 }
 print ("------------Optional Variable Demo End-------------\n")
+
 print ("------------Forced Unwrapping Demo Start-------------")
 //Forced unwrapping
 if myString != nil {
@@ -67,20 +68,23 @@ if myNewString != nil {
     print("myNewString has nil value")
 }
 print ("------------Automatic Unwrapping Demo End-------------\n")
-print ("------------Tuple Variable Demo Start-------------")
 
+print ("------------Tuple Variable Demo Start-------------")
 //Tuple Variable
 var error501 = (errorCode: 501, description: "Not Implemented")
 print(error501.errorCode ,":", error501.description)   // prints 501.
+print ("------------Tuple Variable Demo End-------------\n")
 
-
+print ("------------Array and For Loop Demo Start-------------")
 //Array and for loop
 var someInts:[Int] = [10, 20, 30]
 
 for index in someInts {
 	print( "Value of index is \(index)")
 }
+print ("------------Array and For Loop Demo End-------------\n")
 
+print ("------------Repeat Demo Start-------------")
 //repeat while with continue
 var index = 10
 
@@ -91,8 +95,9 @@ repeat {
 	}
 	print( "Value of index is \(index)")
 } while index < 20
+print ("------------Repeat Demo End-------------\n")
 
-
+print ("------------Switch Demo Start-------------")
 //switch case with fallthrough
 index = 10
 
@@ -108,25 +113,33 @@ case 5 :
 default :
 	print( "default case")
 }
+print ("------------Switch Demo End-------------\n")
 
+print ("------------String Iteration Demo Start-------------")
 //string iteration
 for chars in "ThisString" {
 	print(chars, terminator: "-")
 }
 print("")
+print ("------------String Iteration Demo End-------------\n")
 
+print ("------------For in with number range Demo Start-------------")
 //for in
 for num in 0...10{
 	print(num)
 }
 print("")
+print ("------------For in with number range Demo End-------------\n")
 
+print ("------------Array Creation Demo Start-------------")
 //Array creation
 var intArray = [Int](repeating: 0, count: 4)
 for eachInt in intArray{
 	print(eachInt)
 }
+print ("------------Array Creation Demo End-------------\n")
 
+print ("------------Sets Demo Start-------------")
 //Sets
 let evens: Set = [10,12,14,16,18]
 let odds: Set = [5,7,9,11,13]
@@ -134,13 +147,14 @@ let primes: Set = [2,3,5,7]
 print(odds.union(evens).sorted())
 print(odds.intersection(evens).sorted())
 print(odds.subtracting(primes).sorted())
+print ("------------Sets Demo End-------------\n")
 
-
+print ("------------Dictionary Demo Start-------------")
 //Dictionary
 var someDict:[Int:String] = [1:"One", 2:"Two", 3:"Three"]
 var someVar = someDict[1]
 
-print( "Value of key = 1 is \(someVar)" )
+print( "Value of key = 1 is \(someVar ?? "No value")" )
 print( "Value of key = 2 is \(someDict[2])" )
 print( "Value of key = 3 is \(someDict[3])" )
 
@@ -167,7 +181,9 @@ for city in closeCities{
 var GroupedCities = Dictionary(grouping: cities ) { $0.first! }
 
 print(GroupedCities)
+print ("------------Dictionary Demo End-------------\n")
 
+print ("------------Functions Demo Start-------------")
 //Functions
 func display(no1: Int) -> Int {
 	let a = no1
@@ -176,7 +192,9 @@ func display(no1: Int) -> Int {
 
 print(display(no1: 100))
 print(display(no1: 200))
+print ("------------Functions Demo End-------------\n")
 
+print ("------------Functions with multiple return values Demo Start-------------")
 //Functions with multiple return values
 func ls(array: [Int]) -> (large: Int, small: Int) {
 	var lar = array[0]
@@ -195,6 +213,9 @@ func ls(array: [Int]) -> (large: Int, small: Int) {
 let num = ls(array: [40,12,-5,78,98])
 print("Largest number is: \(num.large) and smallest number is: \(num.small)")
 
+print ("------------Functions with multiple return values Demo End-------------\n")
+
+print ("------------Functions with external parameters Demo Start-------------")
 //Functions with external parameters
 func pow(firstArg a: Int, secondArg b: Int) -> Int {
 	var res = a
@@ -206,7 +227,9 @@ func pow(firstArg a: Int, secondArg b: Int) -> Int {
 }
 
 pow(firstArg:5, secondArg:3)
+print ("------------Functions with external parameters Demo End-------------\n")
 
+print ("------------Functions with variadic parameters Demo Start-------------")
 //Functions with variadic parameters
 func vari<N>(members: N...){
 	for i in members {
@@ -217,7 +240,9 @@ func vari<N>(members: N...){
 vari(members: 4,3,5)
 vari(members: 4.5, 3.1, 5.6)
 vari(members: "Swift 4", "Enumerations", "Closures")
+print ("------------Functions with variadic parameters Demo End-------------\n")
 
+print ("------------Functions with inout parameters Demo Start-------------")
 //Functions with inout parameters
 func temp(a1: inout Int, b1: inout Int) {
 	let t = a1
@@ -230,6 +255,9 @@ var co = 10
 temp(a1: &no, b1: &co)
 print("Swapped values are \(no), \(co)")
 
+print ("------------Functions with inout parameters Demo End-------------\n")
+
+print ("------------Nested Functions Demo Start-------------")
 //Nested Functions
 func calcDecrement(forDecrement total: Int) -> () -> Int {
 	var overallDecrement = 0
@@ -243,6 +271,9 @@ func calcDecrement(forDecrement total: Int) -> () -> Int {
 let decrem = calcDecrement(forDecrement: 30)
 print(decrem())
 
+print ("------------Nested Functions Demo End-------------\n")
+
+print ("------------Classes Demo Start-------------")
 //Classes
 class studentMarks {
 	var mark = 300
@@ -280,7 +311,9 @@ print("\(spClass1)")
 
 spClass1 !== spClass2 // true
 print("\(spClass2)")
+print ("------------Classes Demo End-------------\n")
 
+print ("------------Closures Demo Start-------------")
 //Closures
 let sum = {
 	(no1: Int, no2: Int) -> Int in
@@ -290,6 +323,9 @@ let sum = {
 let digits = sum(10, 20)
 print(digits)
 
+print ("------------Closures Demo End-------------\n")
+
+print ("------------Closures with single expression Demo Start-------------")
 //Closures with single expression returns
 
 //sort with closure
@@ -304,7 +340,9 @@ print(ascending)
 var numbers = [45,6,113,56,8,56,43,78]
 numbers.sort(by: >)
 print(numbers)
+print ("------------Closures with single expression Demo End-------------\n")
 
+print ("------------Enum with associated values Demo Start-------------")
 //enum with associated values
 enum Student {
 	case Name(String)
@@ -320,7 +358,9 @@ case .Name(let studName):
 case .Mark(let Mark1, let Mark2, let Mark3):
 	print("Student Marks are: \(Mark1),\(Mark2),\(Mark3).")
 }
+print ("------------Enum with associated values Demo End-------------\n")
 
+print ("------------Enum with raw values Demo Start-------------")
 //enum with raw values
 enum Month: Int {
 	case January = 1, February, March, April, May, June, July, August,
@@ -329,8 +369,9 @@ enum Month: Int {
 
 let yearMonth = Month.May.rawValue
 print("Value of the Month is: \(yearMonth).")
+print ("------------Enum with raw values Demo End-------------\n")
 
-
+print ("------------Structure Demo Start-------------")
 //structure
 struct markStruct {
 	var mark1: Int
@@ -348,8 +389,9 @@ var newStructMarks = markStruct(mark1: 98, mark2: 96, mark3:100)
 print(newStructMarks.mark1)
 print(newStructMarks.mark2)
 print(newStructMarks.mark3)
+print ("------------Structure Demo End-------------\n")
 
-
+print ("------------Computed Properties Demo Start-------------")
 //computed properties
 class sample {
 	var no1 = 0.0, no2 = 0.0
@@ -373,7 +415,9 @@ result.middle = (0.0, 10.0)
 
 print(result.no1)
 print(result.no2)
+print ("------------Computed Properties Demo End-------------\n")
 
+print ("------------Read Only Properties Demo Start-------------")
 //read only properties
 class film {
 	var head = ""
@@ -394,7 +438,9 @@ print(movie.metaInfo["head"]!)
 print(movie.metaInfo["duration"]!)
 
 //movie.metaInfo = ("new",1.0); //metaInfo' is a get-only property
+print ("------------Read Only Properties Demo End-------------\n")
 
+print ("------------Properties Didset - Willset Demo Start-------------")
 //properties didset-willset
 class Samplepgm {
 	var counter: Int = 0 {
@@ -413,8 +459,9 @@ class Samplepgm {
 let NewCounter = Samplepgm()
 NewCounter.counter = 100
 NewCounter.counter = 800
+print ("------------Properties Didset - WillSet Demo End-------------\n")
 
-
+print ("------------Methods Demo Start-------------")
 //methods - functions in class and structs
 class Math {
 	class func abs(number: Int) -> Int {
@@ -441,7 +488,9 @@ let newNum2 = absno.abs(number: -5)
 
 print(newNum1)
 print(newNum2)
+print ("------------Methods Demo End-------------\n")
 
+print ("------------Methods in Enum Demo Start-------------")
 //methods in enum
 enum WeekDay :String {
 	
@@ -453,7 +502,9 @@ enum WeekDay :String {
 }
 
 print(WeekDay.Monday.day())
+print ("------------Methods in enum Demo End-------------\n")
 
+print ("------------Subscripts Demo Start-------------")
 //Subscripts
 class daysofaweek {
 	private var days = ["Sunday", "Monday", "Tuesday", "Wednesday",
@@ -476,7 +527,9 @@ print(p[3])
 print(p[4])
 p[4] = "newDay"
 print(p[4])
+print ("------------Subscripts Demo End-------------\n")
 
+print ("------------Subscripts in struct Demo Start-------------")
 //Subscripts in struct
 struct Matrix {
 	let rows: Int, columns: Int
@@ -505,8 +558,9 @@ mat[1,1] = 5.0
 print(mat[0,0])
 print(mat[1,2])
 print(mat.print)
+print ("------------Subscripts in struct Demo End-------------\n")
 
-
+print ("------------Inheritance Demo Start-------------")
 //Inheritance
 class StudDetails {
 	var marks1: Int;
@@ -545,7 +599,9 @@ let marksobtained = displayDetails()
 marksobtained.display()
 marksobtained.testOverride()
 print(marksobtained.total)
+print ("------------Inheritance Demo End-------------\n")
 
+print ("------------Initializer Delegation Demo Start-------------")
 //Initializer delegation -  calling initializer from another initializer
 struct Stmark {
 	var mark1 = 0.0, mark2 = 0.0
@@ -578,7 +634,9 @@ print("student result is: \(set2.average.m1, set2.average.m2) \(set2.result.mark
 
 let set3 = block(avg: stdb(m1: 4.0, m2: 4.0),result: Stmark(mark1: 3.0, mark2: 3.0))
 print("student result is: \(set3.average.m1, set3.average.m2) \(set3.result.mark1, set3.result.mark2)")
+print ("------------Initializer Delegation Demo End-------------\n")
 
+print ("------------Convenience Initializer Demo Start-------------")
 //Conveinience initializers
 class mainClass {
 	var no1 : Int // local storage
@@ -605,7 +663,9 @@ let base = childClass(no1: 30, no2: 50)
 print("res is: \(main.no1)")
 print("res is: \(base.no1)")
 print("res is: \(base.no2)")
+print ("------------Convienience Initializer Demo End-------------\n")
 
+print ("------------ARC Strong Referencing Demo Start-------------")
 //ARC Strong Referencing
 class studmarks {
 	let name: String
@@ -641,7 +701,9 @@ mari = student(name: "ARC")
 
 shiba!.stud = mari
 mari!.strname = shiba
+print ("------------ARC Strong Referencing Demo End-------------\n")
 
+print ("------------ARC Weak Referencing Demo Start-------------")
 //ARC - Weak Referencing
 class module {
 	let name: String
@@ -667,7 +729,9 @@ toc!.sub = list
 
 toc = nil
 list = nil
+print ("------------ARC Weak Referencing Demo End-------------\n")
 
+print ("------------Protocols Demo Start-------------")
 //Protocols
 protocol classa {
 	var marks: Int { get set }
@@ -708,3 +772,97 @@ print(studdet.result)
 print(studdet.present)
 print(studdet.subject)
 print(studdet.stname)
+print ("------------Protocols Demo End-------------\n")
+
+print ("------------TypeCasting Demo Start-------------")
+class Subjects {
+	var physics: String
+	init(physics: String) {
+		self.physics = physics
+	}
+}
+
+class Chemistry: Subjects {
+	var equations: String
+	init(physics: String, equations: String) {
+		self.equations = equations
+		super.init(physics: physics)
+	}
+}
+
+class Maths: Subjects {
+	var formulae: String
+	init(physics: String, formulae: String) {
+		self.formulae = formulae
+		super.init(physics: physics)
+	}
+}
+
+let saprint: [AnyObject] = [Chemistry(physics: "solid physics", equations: "Hertz"),
+							Maths(physics: "Fluid Dynamics", formulae: "Giga Hertz"),
+							Chemistry(physics: "Thermo physics", equations: "Decibels"),
+							Maths(physics: "Astro Physics", formulae: "MegaHertz"),
+							Maths(physics: "Differential Equations", formulae: "Cosine Series")]
+
+let samplechem = Chemistry(physics: "solid physics", equations: "Hertz")
+print("Instance physics is: \(samplechem.physics)")
+print("Instance equation is: \(samplechem.equations)")
+
+let samplemaths = Maths(physics: "Fluid Dynamics", formulae: "Giga Hertz")
+print("Instance physics is: \(samplemaths.physics)")
+print("Instance formulae is: \(samplemaths.formulae)")
+
+var chemCount = 0
+var mathsCount = 0
+
+for item in saprint {
+	if let chem = item as? Chemistry {
+		print("Chemistry topics are: '\(chem.physics)', \(chem.equations)")
+	} else if let example = item as? Maths {
+		print("Maths topics are: '\(example.physics)', \(example.formulae)")
+	}
+}
+
+var exampleany = [Any]()
+exampleany.append(12)
+exampleany.append(3.14159)
+exampleany.append("Example for Any")
+exampleany.append(Chemistry(physics: "solid physics", equations: "Hertz"))
+
+for item in exampleany {
+	switch item {
+	case let intValue as Int:
+		print("Integer value is \(intValue)")
+	case let someDouble as Double where someDouble > 0:
+		print("Pi value is \(someDouble)")
+	case let someString as String:
+		print("\(someString)")
+	case let phy as Chemistry:
+		print("Topics '\(phy.physics)', \(phy.equations)")
+	default:
+		print("None")
+	}
+}
+print ("------------TypeCasting Demo End-------------\n")
+print ("------------Extensions Demo Start-------------")
+var add: Int {return self + 100 }
+var sub: Int { return self - 10 }
+var mul: Int { return self * 10 }
+var div: Int { return self / 5 }
+}
+
+let addition = 3.add
+print("Addition is \(addition)")
+
+let subtraction = 120.sub
+print("Subtraction is \(subtraction)")
+
+let multiplication = 39.mul
+print("Multiplication is \(multiplication)")
+
+let division = 55.div
+print("Division is \(division)")
+
+let mix = 30.add + 34.sub
+print("Mixed Type is \(mix)")
+print("---------------Extensions Demo End----------------\n")
